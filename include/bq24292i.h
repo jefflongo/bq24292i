@@ -24,7 +24,7 @@ bool bq24292i_set_vin_max(bq24292i_t const* dev, bq24292i_vin_max_t mv);
 bool bq24292i_get_vin_max(bq24292i_t const* dev, bq24292i_vin_max_t* mv);
 
 bool bq24292i_set_vsys_min(bq24292i_t const* dev, bq24292i_vsys_min_t mv);
-bool bq24292i_get_vin_max(bq24292i_t const* dev, bq24292i_vsys_min_t* mv);
+bool bq24292i_get_vsys_min(bq24292i_t const* dev, bq24292i_vsys_min_t* mv);
 
 bool bq24292i_set_charge_config(bq24292i_t const* dev, bq24292i_chg_config_t conf);
 bool bq24292i_get_charge_config(bq24292i_t const* dev, bq24292i_chg_config_t* conf);

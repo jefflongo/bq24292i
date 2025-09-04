@@ -12,7 +12,7 @@ static inline bool write_reg(bq24292i_t const* dev, uint8_t reg, uint8_t data) {
 
 static inline bool modify_reg(bq24292i_t const* dev, uint8_t reg, uint8_t data, uint8_t mask) {
     uint8_t buf;
-    if (!read_reg(dev, reg, &data)) {
+    if (!read_reg(dev, reg, &buf)) {
         return false;
     }
 
@@ -255,8 +255,8 @@ bool bq24292i_get_max_charge_voltage(bq24292i_t const* dev, bq24292i_vchg_max_t*
 
 bool bq24292i_set_charge_timer(bq24292i_t const* dev, bq24292i_chg_timer_t conf) {
     if (conf != BQ_CHG_TIMER_DISABLE) {
-        uint8_t data =
-          (uint8_t)(((1u << BQ_CHG_TIMER_EN_POS) & BQ_CHG_TIMER_EN_MSK) | ((conf << BQ_CHG_TIMER_POS) & BQ_CHG_TIMER_MSK));
+        uint8_t data = (uint8_t)(((1u << BQ_CHG_TIMER_EN_POS) & BQ_CHG_TIMER_EN_MSK) |
+                                 ((conf << BQ_CHG_TIMER_POS) & BQ_CHG_TIMER_MSK));
         return modify_reg(
           dev, BQ_CHRG_TERM_TIMER_CTRL, data, BQ_CHG_TIMER_EN_MSK | BQ_CHG_TIMER_MSK);
     } else {
